@@ -42,7 +42,7 @@ raw_input('Press Enter to BOOM!')
 a = '\t\n' * 65536
 strop.expandtabs(a, 65536)
 
-Running above code will crash a the python.exe process.
+Running above code will crash the python.exe process.
 
 ============================
 Crash Analysis using WinDBG:
