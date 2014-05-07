@@ -133,7 +133,6 @@ MSVCR90!memset:
 0021fc48  00a81310 1e06518c 1e1e0658 00a81310
 0021fc58  00000000 009aabf0 00000000 1e0651d9
 
-Second parameter is the destination.
 
 0:000> !address 00aada58
     00a80000 : 00a80000 - 0004b000
