@@ -1,5 +1,5 @@
 Dissecting a Memory Corruption Vulnerability in Python Interpreter Just For Fun:
-
+================================================================================
 
 Recently a new fix has been pushed to python repo. which fixes (http://hg.python.org/cpython/rev/5dabc2d2f776
 ) a memory cprruption vulnerability in python interpreter's strop module. The vulnerability lies in expandtabs() functions. 
@@ -9,7 +9,7 @@ Vulnerable Code:
 
 https://github.com/pgbovine/Py2crazy/blob/master/Python-2.7.5/Modules/stropmodule.c#L627
 
-
+------------------------------------------------------------------------------------------------------------
     for (p = string; p < e; p++) {
         if (*p == '\t') {
             j += tabsize - (j%tabsize);
@@ -27,7 +27,7 @@ https://github.com/pgbovine/Py2crazy/blob/master/Python-2.7.5/Modules/stropmodul
             }
         }
     }
-
+------------------------------------------------------------------------------------------------------------
 
 Patch Diff:
 http://hg.python.org/cpython/diff/5dabc2d2f776/Modules/stropmodule.c
