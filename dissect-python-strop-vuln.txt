@@ -1,8 +1,8 @@
 Dissecting a Memory Corruption Vulnerability in Python Interpreter Just For Fun:
 ================================================================================
 
-Recently a new fix has been pushed to python repo. which fixes (http://hg.python.org/cpython/rev/5dabc2d2f776
-) a memory cprruption vulnerability in python interpreter's strop module. The vulnerability lies in expandtabs() functions. 
+Recently I've noticed a new fix has been pushed to official python source code repository which fixes (http://hg.python.org/cpython/rev/5dabc2d2f776
+) a memory corruption vulnerability in python interpreter's strop module. The vulnerability lies in expandtabs() functions. 
 This is due to a missing check in line 626,627 of /Modules/stropmodule.c.
 
 Vulnerable Code:
