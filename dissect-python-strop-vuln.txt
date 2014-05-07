@@ -6,7 +6,28 @@ Recently a new fix has been pushed to python repo. which fixes (http://hg.python
 This is due to a missing check in line 626,627 of /Modules/stropmodule.c.
 
 Vulnerable Code:
+
 https://github.com/pgbovine/Py2crazy/blob/master/Python-2.7.5/Modules/stropmodule.c#L627
+
+
+    for (p = string; p < e; p++) {
+        if (*p == '\t') {
+            j += tabsize - (j%tabsize);
+            if (old_j > j) {
+                PyErr_SetString(PyExc_OverflowError,
+                                "new string is too long");
+                return NULL;
+            }
+            old_j = j;
+        } else {
+            j++;
+            if (*p == '\n') {
+                i += j;  // Missing check 
+                j = 0;
+            }
+        }
+    }
+
 
 Patch Diff:
 http://hg.python.org/cpython/diff/5dabc2d2f776/Modules/stropmodule.c
