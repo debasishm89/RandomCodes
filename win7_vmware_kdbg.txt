@@ -1,0 +1,15 @@
+Kernel Debug Windows 7 System with VMWARE Workstation:
+======================================================
+
+On Debugee Win7 system run below commands on a elevated command prompt:
+
+bcdedit /set {current} debug yes
+bcdedit /set {current} debugtype serial
+bcdedit /set {current} debugport 2
+bcdedit /set {current} baudrate 115200
+bcdedit /set {bootmgr} displaybootmenu yes
+
+On Debugger(host)system run bellow commands:
+
+cd "C:\Program Files\Debugging Tools for Windows (x64)"
+windbg -b -k com:pipe,port=\\.\pipe\com_1,resets=0,reconnect
