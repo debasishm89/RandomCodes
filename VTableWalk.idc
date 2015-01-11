@@ -7,33 +7,31 @@
 
 static GetNumMethods(vtbl)
 {
-auto a, x;
-a = 0;
-x = Dword(vtbl + a);
-
-while ((x) && (x != BADADDR) && (Dword(x) != BADADDR)) 
-{
-a = a + 4;
-x = Dword(vtbl + a);
-}
-return (a-4) / 4;
+    auto a, x;
+    a = 0;
+    x = Dword(vtbl + a);
+    while ((x) && (x != BADADDR) && (Dword(x) != BADADDR)) 
+    {
+        a = a + 4;
+        x = Dword(vtbl + a);
+    }
+    return (a-4) / 4;
 }
 
 static ParseVtbl()
 {
-auto a, b, c;
-a = ScreenEA();
-b = GetNumMethods(a);
-Message("%d Vfuncs found\n", b);
-for (c = a; c < a + (b*4); c = c + 4)
-{
-if (c != BADADDR)
-{
-Message("Trying to make Function at: %X\n", c);
-MakeData(c, FF_DWRD, 4, 0);
-}
-}
-
+    auto a, b, c;
+    a = ScreenEA();
+    b = GetNumMethods(a);
+    Message("%d Vfuncs found\n", b);
+    for (c = a; c < a + (b*4); c = c + 4)
+    {
+        if (c != BADADDR)
+        {
+            Message("Trying to make Function at: %X\n", c);
+            MakeData(c, FF_DWRD, 4, 0);
+        }
+    }
 }
 
 static main()
