@@ -1,0 +1,17 @@
+$$ Windbg script beaks when heap block of size 0x5a get allocated $$>a<C:\Users\deb\Desktop\a.wds
+
+.block
+{
+	r $t1 = 0;
+	bp ntdll!RtlAllocateHeap "
+		r $t1 = poi(esp+0xc);
+		.if ($t1 == 0x0000005a)
+		{
+			.printf \"\nMessageBoxW has been called more than 5 times\n\n\n\";
+		}
+		.else
+		{
+			g;
+		}
+	"
+}
