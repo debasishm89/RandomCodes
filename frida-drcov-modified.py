@@ -1,5 +1,8 @@
-Modified version of fridacov (https://github.com/DavidCatalan/fridacov) which writes the coverage log in ASCII format( just like like dynamoRIO log), instead of bin. format
-
+'''
+Modified version of fridacov (https://github.com/DavidCatalan/fridacov)
+which writes the coverage log in ASCII format( just like like dynamoRIO log), 
+instead of bin. format
+'''
 #!/usr/bin/env python
 from __future__ import print_function
 
