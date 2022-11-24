@@ -245,7 +245,7 @@ def create_coverage(data):
     #print(data)
     bb_header = b'BB Table: %d bbs\n' % len(data)
     additional_header = 'module id, start, size:\n'    
-    return bb_header + b''.join(data)
+    return bb_header + ''.join(data).encode('utf-8')
 
 def on_message(msg, data):
     #print(msg)
